@@ -102,6 +102,7 @@ int main(void) {
     for(int i = 0; i < counter; i++) {
         array1[i] = array2[i] = -1;
     }
+    counter = 0;
     while((fgets(pointers_array[counter], amount, fp)) != NULL) {
         counter++;
     }
