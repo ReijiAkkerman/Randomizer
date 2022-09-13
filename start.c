@@ -169,4 +169,4 @@ int _amountCicles(int counter, int finding_number) {
         count++;
     } while(y != finding_number);
     return count;
-}
+} 
