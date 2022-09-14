@@ -99,28 +99,9 @@ int main(void) {
             pointers_array1[i][j] = '\0';
         }
     }
-    for(int i = 0; i < counter; i++) {
-        array1[i] = array2[i] = -1;
-    }
     counter = 0;
     while((fgets(pointers_array[counter], amount, fp)) != NULL) {
         counter++;
-    }
-    for(int i = 0; i < counter; i++) {
-        x = rand();
-        x %= counter;
-        if(array1[x] < 0) {
-            array1[x] = x;
-            array2[i] = x;
-        }
-        else {
-            do {
-                x = rand();
-                x %= counter;
-            } while(array1[x] >= 0);
-            array1[x] = x;
-            array2[i] = x;
-        }
     }
     a = 0;
     for(int i = 0; i < counter; i++) {
