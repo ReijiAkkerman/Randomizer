@@ -81,8 +81,8 @@ int main(void) {
     }
     words_array[a] = '\0';
     fclose(fp);
-    if((fp = fopen("reordered_NW.txt", "w")) == NULL) {
-        perror("Ошибка создания файла reordered_NW.txt");
+    if((fp = fopen("NW.txt", "w")) == NULL) {
+        perror("Ошибка создания файла NW.txt");
         exit(0);
     }
     fputs(words_array, fp);
@@ -124,8 +124,8 @@ int main(void) {
     }
     words_array[a] = '\0';
     fclose(fp);
-    if((fp = fopen("reordered_TNW.txt", "w")) == NULL) {
-        perror("Ошибка создания файла reordered_TNW.txt");
+    if((fp = fopen("TNW.txt", "w")) == NULL) {
+        perror("Ошибка создания файла TNW.txt");
         exit(0);
     }
     fputs(words_array, fp);
