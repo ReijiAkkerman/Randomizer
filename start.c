@@ -26,24 +26,24 @@ int main(void) {
     char *pointers_array1[counter];
     int array1[counter];
     int array2[counter];
-    for(int i = 0; i < counter; i++) {
+    for(register int i = 0; i < counter; i++) {
         pointers_array[i] = malloc(amount);
         pointers_array1[i] = malloc(amount);
     }
-    for(int i = 0; i < counter; i++) {
+    for(register int i = 0; i < counter; i++) {
         for(int j = 0; j < amount; j++) {
             pointers_array[i][j] = '\0';
             pointers_array1[i][j] = '\0';
         }
     }
-    for(int i = 0; i < counter; i++) {
+    for(register int i = 0; i < counter; i++) {
         array1[i] = array2[i] = -1;
     }
     counter = 0;
     while((fgets(pointers_array[counter], amount, fp)) != NULL) {
         counter++;
     }
-    for(int i = 0; i < counter; i++) {
+    for(register int i = 0; i < counter; i++) {
         x = rand();
         x %= counter;
         if(array1[x] < 0) {
@@ -71,7 +71,7 @@ int main(void) {
     }
     char *words_array = malloc(a + 1);
     a = 0;
-    for(int i = 0; i < counter; i++) {
+    for(register int i = 0; i < counter; i++) {
         k = 0;
         while(pointers_array1[i][k] != '\0') {
             words_array[a] = pointers_array1[i][k];
@@ -93,7 +93,7 @@ int main(void) {
         perror("Ошибка чтения файла TNW.txt");
         exit(0);
     }
-    for(int i = 0; i < counter; i++) {
+    for(register int i = 0; i < counter; i++) {
         for(int j = 0; j < amount; j++) {
             pointers_array[i][j] = '\0';
             pointers_array1[i][j] = '\0';
@@ -104,7 +104,7 @@ int main(void) {
         counter++;
     }
     a = 0;
-    for(int i = 0; i < counter; i++) {
+    for(register int i = 0; i < counter; i++) {
         k = 0;
         while(pointers_array[i][k] != '\0') {
             pointers_array1[array2[i]][k] = pointers_array[i][k];
@@ -114,7 +114,7 @@ int main(void) {
     }
     words_array = malloc(a + 1);
     a = 0;
-    for(int i = 0; i < counter; i++) {
+    for(register int i = 0; i < counter; i++) {
         k = 0;
         while(pointers_array1[i][k] != '\0') {
             words_array[a] = pointers_array1[i][k];
