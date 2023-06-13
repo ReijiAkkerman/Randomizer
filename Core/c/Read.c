@@ -2,45 +2,36 @@
 #include <stdlib.h>
 #include <string.h>
 
-char* filename;
-char* pathname;
-char* fullname;
-char** NW_array;
-char* counter_array;
+char** strings[2];
 
-void Read() {
-    register int counter = 0;
-    char buffer[256];
+void Read(int buffer_size, char* filename, int strings_number) {
+    int counter = 0;
+    char buffer[buffer_size];
 
-    FILE* fp = fopen("NW.txt", "r");
+    FILE* fp;
+    fp = fopen(filename, "r");
     if(fp == NULL) {
-        perror("Ошибка открытия потока\n");
+        printf("Ошибка открытия файла %s\n", filename);
         exit(0);
     }
-    while((fgets(buffer, 256, fp)) != NULL) 
+
+    while((fgets(buffer, buffer_size, fp)) != NULL) 
         counter++;
 
-    counter_array = malloc(counter * sizeof(char));     // массив для количества символов в строке 
-    NW_array = malloc(counter * sizeof(char*));         // массив указателей на строки
-    for(register int i = 0; i < counter; i++) 
-        NW_array[i] = malloc(256);
+    strings[strings_number] = malloc(sizeof(char*) * counter);
+    
+
+    for(int i = 0; i < counter; i++) 
+        strings[strings_number][i] = malloc(sizeof(char) * buffer_size);
 
     fseek(fp, 0, SEEK_SET);
-    register int i = 0;
-    while((fgets(buffer, 256, fp)) != NULL) {
-        register int j = 0;
-        while(buffer[j] != '\n') {
-            NW_array[i][j] = buffer[j];
-            j++;
-        }
-        NW_array[i][j] = '\n';
-        j++;
-        counter_array[i] = j;
-        j = 0;
-        i++;
+    counter = 0;
+
+    while((fgets(buffer, buffer_size, fp)) != NULL) {
+        strcpy(strings[strings_number][counter], buffer);
+        counter++;
     }
-    fclose(fp);
     for(int i = 0; i < counter; i++) {
-        printf("%d\t%d\t%s", i, counter_array[i], NW_array[i]);
+        printf("%d\t%s", i, strings[strings_number][i]);
     }
 }
